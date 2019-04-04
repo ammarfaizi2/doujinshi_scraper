@@ -32,7 +32,7 @@ function download($url)
 			CURLOPT_SSL_VERIFYHOST => false,
 			CURLOPT_USERAGENT => "Just a bot",
 			CURLOPT_PROXY => "127.0.0.1:49060",
-			CURLOPT_PROXYTYPE => CURLPROXY_SOCKS5
+			CURLOPT_PROXYTYPE => CURLPROXY_SOCKS5_HOSTNAME
 		]
 	);
 	$out = curl_exec($ch);
