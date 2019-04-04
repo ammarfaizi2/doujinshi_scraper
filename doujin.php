@@ -4,9 +4,20 @@ $a = preg_match_all("/<a href=\"(.*?)\"/", file_get_contents("me.tmp"), $m);
 
 unset($m[0]);
 
+$i = 0;
+pcntl_signal(SIGCHLD, SIG_IGN);
 foreach ($m[1] as $k => &$v) {
 	if (!pcntl_fork()) {
 		download("http://servertoenof63yc.onion/freestuff/doujinshi/{$v}");	
+		exit;
+	}
+
+	$i++;
+
+	if (($i % 10) == 0) {
+		$status = null;
+		print "Waiting...\n";
+		pcntl_wait($status);
 	}
 }
 
