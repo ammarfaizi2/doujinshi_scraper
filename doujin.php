@@ -12,7 +12,6 @@ foreach ($m[1] as $k => &$v) {
 		download("http://servertoenof63yc.onion/freestuff/doujinshi/{$v}");	
 		exit;
 	}
-	die;
 	$i++;
 
 	if (($i % 10) == 0) {
