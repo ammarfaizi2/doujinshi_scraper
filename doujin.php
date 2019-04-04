@@ -5,13 +5,14 @@ $a = preg_match_all("/<a href=\"(.*?)\"/", file_get_contents("me.tmp"), $m);
 unset($m[0]);
 
 $i = 0;
+unset($m[1][0], $m[1][1]);
 pcntl_signal(SIGCHLD, SIG_IGN);
 foreach ($m[1] as $k => &$v) {
 	if (!pcntl_fork()) {
 		download("http://servertoenof63yc.onion/freestuff/doujinshi/{$v}");	
 		exit;
 	}
-
+	die;
 	$i++;
 
 	if (($i % 10) == 0) {
