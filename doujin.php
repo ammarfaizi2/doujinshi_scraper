@@ -8,13 +8,13 @@ $i = 0;
 unset($m[1][0], $m[1][1]);
 pcntl_signal(SIGCHLD, SIG_IGN);
 foreach ($m[1] as $k => &$v) {
-	if (!pcntl_fork()) {
+	if (!pcntl_fork())) {
 		download("http://servertoenof63yc.onion/freestuff/doujinshi/{$v}");	
 		exit;
 	}
 	$i++;
 
-	if (($i % 10) == 0) {
+	if (($i % 16) == 0) {
 		$status = null;
 		print "Waiting...\n";
 		pcntl_wait($status);
